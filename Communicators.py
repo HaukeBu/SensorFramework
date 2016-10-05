@@ -1,6 +1,3 @@
-import threading
-import time
-import json
 import pika
 import socket
 
