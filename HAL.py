@@ -4,36 +4,39 @@ import io
 
 
 def distance_sensor(id_nr):
+    json_list = []
     print("ID:", id_nr)
     # get Values
     value = [1]
     # Validation
 
     # get json
-    json = msg_gen.pack_to_json(1, "distance", id_nr, value)
-    return json
+    json_list.append( msg_gen.pack_to_json(1, "distance", id_nr, value))
+    return json_list
 
 
 def acceleration_sensor(id_nr):
+    json_list = []
     print("ID:", id_nr)
     # get Values
     value = [1,2]
     # Validation
 
     # get json
-    json = msg_gen.pack_to_json(1, "acceleration", id_nr, value)
-    return json
+    json_list.append(msg_gen.pack_to_json(1, "acceleration", id_nr, value))
+    return json_list
 
 
 def sound_sensor(id_nr):
+    json_list = []
     print("ID:", id_nr)
     # get Values
     value = [1]
     # Validation
 
     # get json
-    json = msg_gen.pack_to_json(1, "sound", id_nr, value)
-    return json
+    json_list.append(msg_gen.pack_to_json(1, "sound", id_nr, value))
+    return json_list
 
 
 def serial_sensors():
