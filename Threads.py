@@ -31,4 +31,6 @@ class SensorEvaluator (threading.Thread):
         while True:
             time.sleep(1)
             to_send = self.function(0)
-            self.q.put(to_send)
+
+            for json in to_send:
+                self.q.put(json)
