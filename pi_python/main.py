@@ -12,8 +12,8 @@ json_queue = QueuePackage.Queue()
 json_queue.put("Start!");
 
 # Get the communicator and Setup the connection
-# communicator = communicators.CommunicatorDummy()
-communicator = communicators.SocketCommunicator("141.22.80.72", 15000)
+communicator = communicators.CommunicatorDummy()
+# communicator = communicators.SocketCommunicator("141.22.80.72", 15000)
 communicator.setup_connection()
 
 # create threads
