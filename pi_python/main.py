@@ -17,7 +17,7 @@ communicator = communicators.CommunicatorDummy()
 communicator.setup_connection()
 
 # create threads
-serial_sensors_thread = own_threads.SensorEvaluator(1, "SensorEvaluator_pressure", 1, json_queue, HAL.serial_sensors())
+serial_sensors_thread = own_threads.SensorEvaluator(1, "SensorEvaluator_pressure", 1, json_queue, HAL.serial_sensors)
 communicator_thread = own_threads.MQ_Communicator(10, "MQ_Communicator", 10, json_queue, communicator)
 
 # start the communicator thread

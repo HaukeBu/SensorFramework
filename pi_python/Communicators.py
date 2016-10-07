@@ -4,8 +4,8 @@ import socket
 
 class CommunicatorDummy:
     def __init__(self):
-        name = "Dummy"
-        print(name + "created!")
+        self.name = "Dummy"
+        print(self.name + "created!")
 
     def setup_connection(self):
         print(self.name + "setup!")
@@ -13,7 +13,7 @@ class CommunicatorDummy:
     def close_connection(self):
         print(self.name + "close!")
 
-    def print(self, to_send):
+    def send(self, to_send):
         print(self.name + ":" + to_send)
 
 
