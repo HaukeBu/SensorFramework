@@ -44,3 +44,6 @@ Thumbs.db
 !pi_python
 pi_python/.DS_Store
 pi_python/.idea
+
+!files/*
+!files
