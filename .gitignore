@@ -39,3 +39,11 @@ Thumbs.db
 
 !arduino/*
 !arduino
+
+!pi_python/*
+!pi_python
+pi_python/.DS_Store
+pi_python/.idea
+
+!files/*
+!files
