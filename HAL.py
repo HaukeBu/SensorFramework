@@ -41,7 +41,8 @@ def sound_sensor(id_nr):
 
 def serial_sensors():
 
-    port = serial.Serial("/dev/cu.wchusbserial620", 9600, timeout=None)
+    #port = serial.Serial("/dev/cu.wchusbserial620", 9600, timeout=None)
+    port = serial.Serial("com3", 9600, timeout=None)
     sio = io.TextIOWrapper(io.BufferedRWPair(port, port))
 
     json_list = []

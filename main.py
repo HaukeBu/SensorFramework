@@ -12,12 +12,12 @@ json_queue = QueuePackage.Queue()
 json_queue.put("Start!");
 
 # Get the communicator and Setup the connection
-# communicator = communicators.CommunicatorDummy()
-communicator = communicators.SocketCommunicator("141.22.80.72", 15000)
+communicator = communicators.CommunicatorDummy()
+#communicator = communicators.SocketCommunicator("141.22.80.72", 15000)
 communicator.setup_connection()
 
 # create threads
-serial_sensors_thread = own_threads.SensorEvaluator(1, "SensorEvaluator_pressure", 1, json_queue, HAL.serial_sensors())
+serial_sensors_thread = own_threads.SensorEvaluator(1, "SensorEvaluator_pressure", 1, json_queue, HAL.serial_sensors)
 communicator_thread = own_threads.MQ_Communicator(10, "MQ_Communicator", 10, json_queue, communicator)
 
 # start the communicator thread
