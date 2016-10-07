@@ -26,7 +26,6 @@ communicator_thread.start()
 
 
 
-
 # join all threads
 serial_sensors_thread.join()
 communicator_thread.join()
