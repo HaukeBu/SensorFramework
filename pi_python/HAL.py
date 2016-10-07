@@ -43,17 +43,20 @@ def serial_sensors():
 
     #port = serial.Serial("/dev/cu.wchusbserial620", 9600, timeout=None)
     port = serial.Serial("com3", 9600, timeout=None)
+
     sio = io.TextIOWrapper(io.BufferedRWPair(port, port))
 
+    print("port is open: ", port.is_open)
     json_list = []
-    request = "start\n"
 
-    sio.write(request)
+    sio.write("hello\n")
+    sio.flush()
+    hello = sio.readline()
+    print(hello)
+    #temperature = 0
+    #pressure = 0
 
-    temperature = sio.readline(1)
-    pressure = sio.readline(16)
+    json_list.append(msg_gen.pack_to_json(1, "temperature", 1, 1))
+    json_list.append(msg_gen.pack_to_json(1, "pressure", 1, 1))
 
-    json_list.append(msg_gen.pack_to_json(1, "temperature", 1, temperature))
-    json_list.append(msg_gen.pack_to_json(1, "pressure", 1, pressure))
-
-    return json_list
+    return None
