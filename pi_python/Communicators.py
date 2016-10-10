@@ -18,25 +18,25 @@ class CommunicatorDummy:
 
 
 class RabbitMQCommunicator:
-    def __init__(self, ip_address, mq_queue_name, intern_json_queue):
+    def __init__(self, ip_address, mq_exchange_name, mq_routing_keys, intern_json_queue):
         self.connection = False
         self.channel = False
         self.ip_address = ip_address
+        self.mq_exchange_name = mq_exchange_name
+        self.mq_routing_keys = mq_routing_keys
 
-        self.mq_queue_name = mq_queue_name
         self.intern_json_queue = intern_json_queue
 
     def setup_connection(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.ip_address))
         self.channel = self.connection.channel()
-        self.channel.queue_declare(queue=self.mq_queue_name)
 
     def close_connection(self):
         self.connection.close()
 
     def send(self, to_send):
-        self.channel.basic_publish(exchange='',
-                                   routing_key=self.mq_queue_name,
+        self.channel.basic_publish(exchange=self.mq_exchange_name,
+                                   routing_key=self.mq_routing_keys,
                                    body=to_send)
 
 

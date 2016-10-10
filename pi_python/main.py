@@ -9,10 +9,10 @@ import HAL
 
 
 json_queue = QueuePackage.Queue()
-json_queue.put("Start!");
 
 # Get the communicator and Setup the connection
 communicator = communicators.CommunicatorDummy()
+# communicator = communicators.RabbitMQCommunicator("127.0.0.1", "sg.q.sensor_values", "sg.ex.sensor_values", json_queue)
 # communicator = communicators.SocketCommunicator("141.22.80.72", 15000)
 communicator.setup_connection()
 
@@ -23,7 +23,6 @@ communicator_thread = own_threads.MQ_Communicator(10, "MQ_Communicator", 10, jso
 # start the communicator thread
 serial_sensors_thread.start()
 communicator_thread.start()
-
 
 
 
