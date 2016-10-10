@@ -87,7 +87,7 @@ def serial_sensors():
 
     print("analogs: ", analog_values)
     print("temperature: ", temperature_value)
-    json_list.append(msg_gen.pack_to_json(1, "temperature", pressure_sensor_ids, analog_values))
-    json_list.append(msg_gen.pack_to_json(1, "pressure", [0], temperature_value))
+    json_list.append(msg_gen.pack_to_json(1, "pressure", pressure_sensor_ids, analog_values))
+    json_list.append(msg_gen.pack_to_json(1, "temperature", [0], temperature_value))
 
     return json_list
