@@ -3,8 +3,10 @@ import serial
 import io
 import time
 
-#port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
-port = serial.Serial("com3", 9600, timeout=None)
+# port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
+port = serial.Serial("/dev/ttyUSB0", 9600, timeout=None)
+# port = serial.Serial("com3", 9600, timeout=None)
+
 pressure_sensor_ids = list(range(0, 10))
 acceleration_sensor_ids = list(range(0, 2))
 test = list(range(0, 16))
@@ -97,7 +99,7 @@ def serial_sensors():
 
     print("analogs: ", analog_values)
     print("temperature: ", temperature_value)
-    json_list.append(msg_gen.pack_to_json(1, "temperature", pressure_sensor_ids, analog_values))
-    json_list.append(msg_gen.pack_to_json(1, "pressure", [0], temperature_value))
+    json_list.append(msg_gen.pack_to_json(1, "pressure", pressure_sensor_ids, analog_values))
+    json_list.append(msg_gen.pack_to_json(1, "temperature", [0], temperature_value))
 
     return json_list
