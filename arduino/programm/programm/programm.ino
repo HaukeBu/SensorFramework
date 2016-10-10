@@ -178,9 +178,12 @@ void sendData(){
 /* void loop(void)
  * the Main loop, reads all sensors, and checks if it needs to send, if so, it sends 
  */
+
+int cycle=16;
 void loop() {
+    if(cycle)cycle--;
     readSensors();
-    if(needToSend())sendData();
+    if(!cycle&&needToSend())sendData();
     delay(10);
 }
 
