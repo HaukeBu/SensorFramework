@@ -3,7 +3,8 @@ import serial
 import io
 import time
 
-port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
+# port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
+port = serial.Serial("/dev/ttyUSB0", 9600, timeout=None)
 # port = serial.Serial("com3", 9600, timeout=None)
 pressure_sensor_ids = list(range(0, 10))
 acceleration_sensor_ids = list(range(0, 2))
