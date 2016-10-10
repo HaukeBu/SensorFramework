@@ -3,10 +3,11 @@ import serial
 import io
 import time
 
-port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
-# port = serial.Serial("com3", 9600, timeout=None)
+#port = serial.Serial("/dev/tty.wchusbserial410", 9600, timeout=None)
+port = serial.Serial("com3", 9600, timeout=None)
 pressure_sensor_ids = list(range(0, 10))
 acceleration_sensor_ids = list(range(0, 2))
+test = list(range(0, 16))
 
 
 def distance_sensor():
@@ -70,6 +71,7 @@ def serial_sensors():
     print("start_sequence valid")
     analogs = []
     analog_values = []
+
     i = 0
     while i < 16:
         analogs.append(port.readline())
@@ -77,8 +79,17 @@ def serial_sensors():
 
     temperature = port.read(6)
 
-    for index in pressure_sensor_ids:
-        analog_values.append(int(analogs[index]))
+    j = 0
+    while j < 16:
+
+        if j == 4:
+            j += 4
+
+        if j == 14:
+            break
+
+        analog_values.append(int(analogs[j]))
+        j += 1
 
 
     temperature_value = []

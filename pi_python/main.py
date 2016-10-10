@@ -9,7 +9,7 @@ import HAL
 
 
 json_queue = QueuePackage.Queue()
-json_queue.put("Start!");
+json_queue.put("Start!")
 
 # Get the communicator and Setup the connection
 communicator = communicators.CommunicatorDummy()
